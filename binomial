@@ -1,0 +1,79 @@
+#include<stdio.h>
+
+void main()
+
+{
+
+int i,j,n,min,k,c[10][10];
+
+printf("Enter N & K\n");
+
+scanf("%d%d",&n,&k);
+
+for (i=0;i<n;i++)
+
+for(j=0;j<=k;j++)
+
+c[i][j]=0;
+
+if (n >= k)
+
+{
+
+for (i=0;i<=n;i++)
+
+{
+
+min=(i<j) ? i : j;
+
+for(j=0;j<=min;j++)
+
+if((j==0) || (i==j))
+
+c[i][j] = 1;
+
+else
+
+c[i][j] = c[i - 1]
+
+[j - 1] + c[i-1][j];
+
+}
+
+printf("\n The Binomial Co-efficient 
+
+form : ");
+
+for (i=0;i<=n;i++){
+
+for(j=0;j<=k;j++)
+
+if(i>= j)
+
+printf("%4d",c[i][j]);
+
+printf("\n");
+
+}
+
+if(k != 0)
+
+printf("\n The value if c (%d,%d) 
+
+= : %d",n,k,c[n-1][k-1] + c[n-1][k]);
+
+else
+
+printf("\n The value id c(%d,%d)= 
+
+1 \n",n,k);
+
+}
+
+else
+
+printf("n must be greater than k 
+
+");
+
+}
