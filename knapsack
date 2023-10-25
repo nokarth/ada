@@ -1,0 +1,62 @@
+#include<stdio.h>
+int n,capacity,w[50],p[50],maxprofit,i,j;
+
+int MAX(int x, int y)
+
+{
+
+return (x>y)?x:y;
+
+}
+
+int sack (int i, int y)
+
+{
+
+if (i == n)
+
+if (y < w[n])
+
+return 0;
+
+else
+
+return p[n];
+
+if (y < w[i]) return sack (i+1,y);
+
+return MAX (sack(i+1,y),sack(i+1,y-
+
+w[i])+p[i]);
+
+}
+
+int main ()
+
+{
+
+printf("Enter the No of Objects\n");
+
+scanf("%d",&n);
+
+printf("Enter the weights\n");
+
+for(i=0;i<n;i++)
+
+scanf("%d",&w[i]);
+
+printf("Enter the profit\n");
+
+for (i=0;i<n;i++)
+
+scanf("%d",&p[i]);
+
+printf("Enter the capacity\n");
+
+scanf("%d",&capacity);
+
+maxprofit = sack(0,capacity);
+
+printf("Maximum profit = %d ",maxprofit);
+
+}
