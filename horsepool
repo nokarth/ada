@@ -1,0 +1,103 @@
+#include<stdio.h>
+
+#include<string.h>
+
+#include<stdlib.h>
+
+#define M 256
+
+char pattern[M],text[M],table[M];
+
+long m,n,i,j,k;
+
+void shifttable()
+
+{
+
+int in;
+
+for(i=0;i<M;i++)
+
+table[i] = m;
+
+for (j=0;j<m-1;j++)
+
+{
+
+in = (int)pattern[j] - '0';
+
+table[in] = m-1-j;
+
+}
+
+}
+
+int horsepool()
+
+{
+
+int index;
+
+shifttable();
+
+for (i=m-1;i<=n-1;)
+
+{
+
+k = 0;
+
+while ((k <= m-1) && (pattern[m-1-k] ==
+
+text[i-k]))
+
+k++;
+
+if (k == m)return i-m+1;
+
+else
+
+{
+
+index=(int)text[i] - '0';
+
+i = i + table[index];
+
+}
+
+}
+
+return -1;
+
+}
+
+int main ()
+
+{
+
+int found;
+
+printf("Enter the text\n");
+
+gets(text);
+
+printf("\n Enter the Pattern ");
+
+scanf("%s",pattern);
+
+n = strlen(text);
+
+m = strlen(pattern);
+
+found = horsepool();
+
+if (found == -1)
+
+printf("\n Pattern not found!!!\n");
+
+else
+
+printf("\n Pattern found at position %d
+
+",found+1);
+
+}
